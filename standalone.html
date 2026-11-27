@@ -298,6 +298,198 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
   .progress-bar { width: 100px; }
 }
 
+.rtab {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  margin-right: 6px;
+}
+.rtab.active { background: var(--accent-soft); color: var(--accent-dark); border-color: var(--accent); }
+.reading-modes { margin-bottom: 16px; }
+
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.flip-card {
+  perspective: 1000px;
+  height: 120px;
+  cursor: pointer;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s;
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  text-align: center;
+}
+.flip-front .nl-word { font-weight: 700; font-size: 17px; }
+.flip-back { transform: rotateY(180deg); background: var(--accent-soft); border-color: var(--accent); }
+.flip-back .en-word { font-size: 15px; color: var(--accent-dark); }
+.flip-hint { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+.speak-btn {
+  border: none;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  padding: 3px 8px;
+  margin-top: 6px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  float: right;
+}
+.speak-btn:hover { background: var(--accent); }
+
+#btn-mic.recording {
+  background: #d8442e;
+  color: #fff;
+  border-color: #d8442e;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.msg-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: flex-start;
+  max-width: 85%;
+  width: 100%;
+}
+.option-btn {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14.5px;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: var(--shadow);
+  transition: border-color 0.12s, transform 0.12s;
+}
+.option-btn:hover:not(:disabled) { border-color: var(--accent); transform: translateX(3px); }
+.option-btn:disabled { opacity: 0.55; cursor: default; }
+
+.mood-meter {
+  font-size: 13px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.dictation-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  max-width: 680px;
+}
+.d-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+.d-controls select { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font-family: inherit; }
+#d-feedback.good { color: var(--accent); }
+#d-feedback.warn { color: var(--warn); }
+#btn-d-next { margin-top: 10px; }
+
+.reading-content {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  line-height: 1.85;
+  font-size: 15.5px;
+  box-shadow: var(--shadow);
+}
+.clickable-word { cursor: pointer; border-radius: 4px; padding: 0 1px; }
+.clickable-word:hover { background: var(--accent-soft); }
+.clickable-word.q-right { background: #dff0da; color: #2f7a3a; }
+.clickable-word.q-wrong { background: #f6d3ce; color: #a83a2c; }
+.word-popup {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+}
+.question-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+.question-box p { margin: 0 0 8px; font-size: 14.5px; }
+.q-option { display: block; padding: 6px 10px; border-radius: 8px; font-size: 14px; cursor: pointer; }
+.q-option:hover { background: var(--accent-soft); }
+.q-option.q-right { background: #dff0da; }
+.q-option.q-wrong { background: #f6d3ce; }
+.q-explain { margin: 8px 0 0; }
+
+.error-exercise {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+.error-exercise h4 { margin: 0 0 4px; }
+.error-line { margin: 12px 0; font-size: 15.5px; line-height: 1.7; }
+.error-note { display: block; font-size: 13px; margin-top: 4px; }
+
+.mistakes-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.mistake-item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.mistake-line { font-size: 14.5px; margin: 2px 0; }
+.wrong-line { color: #a83a2c; text-decoration: line-through; }
+.right-line { color: #2f7a3a; font-weight: 600; }
+.mistake-item .mark { font-weight: 800; margin-right: 4px; }
+.mistake-item .chip { margin-top: 8px; }
+.mistake-item p { margin: 8px 0; font-size: 13px; }
+
+.header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.good { color: var(--accent); font-weight: 600; }
+
 </style>
 </head>
 <body>
@@ -308,7 +500,7 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
     <span class="flag">🇳🇱</span>
     <div>
       <h1>Zakelijk Nederlands</h1>
-      <p class="tagline">Dutch to business level, one conversation at a time</p>
+      <p class="tagline">Dutch to business level: chat, listen, read, speak</p>
     </div>
   </div>
   <div class="stats">
@@ -324,7 +516,9 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
 <nav class="tabs">
   <button class="tab active" data-view="lessons">💬 Lessons</button>
   <button class="tab" data-view="vocab">🗂️ Vocabulary</button>
-  <button class="tab" data-view="grammar">📖 Grammar</button>
+  <button class="tab" data-view="listening">🎧 Listening</button>
+  <button class="tab" data-view="reading">📖 Reading</button>
+  <button class="tab" data-view="grammar">📝 Grammar</button>
   <button class="tab" data-view="progress">📈 Progress</button>
 </nav>
 
@@ -340,13 +534,21 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
           <h2 id="scenario-heading"></h2>
           <span class="chip" id="scenario-level"></span>
         </div>
-        <div class="step-dots" id="step-dots"></div>
+        <div class="header-right">
+          <span id="mood-meter" class="mood-meter hidden"></span>
+          <label class="toggle" title="Automatically read every tutor line aloud">
+            <input type="checkbox" id="toggle-autoplay" />
+            <span>🔊 auto</span>
+          </label>
+          <div class="step-dots" id="step-dots"></div>
+        </div>
       </div>
       <div class="tips-box" id="tips-box"></div>
       <div class="chat-window" id="chat-window"></div>
-      <div class="composer">
+      <div class="composer" id="composer-row">
         <input type="text" id="chat-input" placeholder="Schrijf je antwoord in het Nederlands…" autocomplete="off" />
         <button class="btn primary" id="btn-send">Send</button>
+        <button class="btn ghost" id="btn-mic" title="Speak your answer (nl-NL)">🎤</button>
         <button class="btn ghost" id="btn-hint" title="Get a hint">Hint</button>
         <button class="btn ghost" id="btn-show-answer" title="Reveal a model answer">Show answer</button>
       </div>
@@ -375,6 +577,7 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
         <button class="btn primary" id="btn-review">Review session</button>
       </div>
     </div>
+    <div id="vocab-table" class="flip-grid"></div>
     <div id="review-panel" class="review-panel hidden">
       <div class="flashcard" id="flashcard">
         <div class="card-top"><span id="review-progress" class="muted"></span><button class="btn ghost small" id="btn-end-review">End</button></div>
@@ -382,6 +585,7 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
         <div class="card-answer hidden" id="card-en"></div>
         <div class="card-actions">
           <button class="btn ghost" id="btn-reveal">Show meaning</button>
+          <button class="btn ghost hidden" id="btn-say-card" title="Hear the word">🔊</button>
           <div class="grade-row hidden" id="grade-row">
             <button class="btn grade again" data-grade="again">Again</button>
             <button class="btn grade hard" data-grade="hard">Hard</button>
@@ -391,18 +595,76 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
         </div>
       </div>
     </div>
-    <div id="vocab-table" class="vocab-table"></div>
+  </section>
+
+  <section id="view-listening" class="view">
+    <h2>🎧 Listening — dictation</h2>
+    <p class="muted">Listen to the business sentence and type exactly what you hear. If your browser has no Dutch voice, use Chrome, Edge or Safari.</p>
+    <div class="dictation-panel">
+      <div class="card-top">
+        <span id="d-progress" class="muted"></span>
+        <span id="d-score" class="muted"></span>
+      </div>
+      <div class="d-controls">
+        <button class="btn primary" id="btn-play">▶ Play</button>
+        <button class="btn ghost" id="btn-repeat">Repeat</button>
+        <select id="d-rate">
+          <option value="0.8">Slow (0.8×)</option>
+          <option value="1" selected>Normal (1×)</option>
+        </select>
+        <button class="btn ghost small" id="btn-d-hint">Hint (EN)</button>
+      </div>
+      <p id="d-en" class="muted"></p>
+      <div class="composer">
+        <input type="text" id="d-input" placeholder="Type what you hear…" autocomplete="off" />
+        <button class="btn primary" id="btn-d-check">Check</button>
+      </div>
+      <div class="composer-foot" id="d-feedback"></div>
+      <button class="btn" id="btn-d-next">Next sentence →</button>
+    </div>
+  </section>
+
+  <section id="view-reading" class="view">
+    <div class="reading-modes">
+      <button class="rtab active" data-rmode="texts">📖 Text bank</button>
+      <button class="rtab" data-rmode="errors">🔍 Error spotting</button>
+    </div>
+
+    <div id="reading-texts">
+      <div id="text-list" class="scenario-list"></div>
+      <div id="text-reader" class="hidden">
+        <button class="btn ghost" id="btn-text-back">← All texts</button>
+        <div class="scenario-title">
+          <h2 id="text-title"></h2>
+          <span class="chip" id="text-level"></span>
+        </div>
+        <p class="muted">Click any word to see its meaning.</p>
+        <div id="word-popup" class="word-popup hidden"></div>
+        <div id="reading-content" class="reading-content"></div>
+        <h3>Comprehension questions</h3>
+        <div id="reading-questions"></div>
+        <button class="btn primary" id="btn-check-questions">Check answers</button>
+        <div id="reading-score" class="composer-foot"></div>
+      </div>
+    </div>
+
+    <div id="reading-errors" class="hidden">
+      <div id="error-list"></div>
+    </div>
   </section>
 
   <section id="view-grammar" class="view">
     <h2>Grammar essentials for business Dutch</h2>
     <div id="grammar-list" class="grammar-list"></div>
+    <h3>Common mistakes to avoid</h3>
+    <p class="muted">These are the errors Dutch managers see most from non-native speakers.</p>
+    <div id="mistakes-list" class="mistakes-list"></div>
   </section>
 
   <section id="view-progress" class="view">
     <h2>Your progress</h2>
     <div class="progress-cards" id="progress-cards"></div>
-    <h3>Scenario completion</h3>
+    <h3>Scenario completion (easiest → hardest)</h3>
     <div id="progress-scenarios" class="progress-scenarios"></div>
   </section>
 
@@ -1540,6 +1802,257 @@ const GRAMMAR_TOPICS = [
   }
 ];
 
+GRAMMAR_TOPICS.push(
+  {
+    title: "de-words vs het-words",
+    level: "A2",
+    body: "About 75% of Dutch nouns take 'de'; the rest take 'het'. All plurals and all diminutives take 'het'. Learn every business noun with its article: 'de vergadering' but 'het rapport', 'het aanbod', 'het contract'."
+  },
+  {
+    title: "Separable verbs",
+    level: "A2",
+    body: "Verbs like 'opbellen', 'afronden', 'overnemen' and 'vastleggen' split in main clauses: 'Ik bel je morgen op.' 'Hij maakt de presentatie vandaag af.' In subclauses they stay together: '... omdat ik je morgen opbel.'"
+  },
+  {
+    title: "'want' vs 'omdat'",
+    level: "B1",
+    body: "'want' keeps main-clause word order: 'Ik bel, want de levering is te laat.' 'omdat' sends the verb to the end: 'Ik bel omdat de levering te laat is.' Use 'omdat' in formal writing, 'want' when speaking."
+  },
+  {
+    title: "Time before place",
+    level: "A2",
+    body: "Dutch order is time before place: 'Ik bel u morgen vanuit kantoor.' — never 'Ik bel u vanuit kantoor morgen.' Same for dates: 'We ontmoeten elkaar dinsdag in Rotterdam.'"
+  },
+  {
+    title: "'er' + quantity or existence",
+    level: "B2",
+    body: "'Er' fills the subject slot when the real subject follows: 'Er zijn vier pallets ontvangen.' 'Er is een probleem met de levering.' 'Er zitten drie mensen in het team.'"
+  },
+  {
+    title: "Numbers and change in reports",
+    level: "B2",
+    body: "'met' = by (amount): 'De omzet steeg met 5%.' 'naar' = to (level): '... naar €2 miljoen.' 'van' = of: 'een stijging van 5%.' 'in vergelijking met' = compared to."
+  },
+  {
+    title: "Softening refusals and deadlines",
+    level: "B2",
+    body: "Dutch business language softens: 'Helaas moeten we u meedelen dat...' 'In principe mogelijk, maar...' 'Zo spoedig mogelijk' instead of 'nu meteen'. Refusals come with a reason, never bare 'nee'."
+  },
+  {
+    title: "Position of 'niet'",
+    level: "B1",
+    body: "'Niet' comes after time and place, before the rest: 'We kunnen uw offerte vandaag niet bevestigen.' — time ('vandaag') first, then 'niet'. Compare: 'Ik werk niet in Amsterdam.' (place first would be wrong)."
+  }
+);
+
+const COMMON_MISTAKES = [
+  { wrong: "Ik heb gesproken met hem gisteren.", right: "Ik heb gisteren met hem gesproken.", note: "Time comes before the rest of the sentence, and the conjugated verb stays second.", level: "A2" },
+  { wrong: "de rapport / de aanbod / de contract", right: "het rapport / het aanbod / het contract", note: "Learn nouns with their article. These three are common het-words.", level: "A2" },
+  { wrong: "...dat je stuurt de offerte.", right: "...dat je de offerte stuurt.", note: "In subclauses (after 'dat', 'omdat', 'als') the verb moves to the end.", level: "A2" },
+  { wrong: "Ik heb de e-mail verstuurt.", right: "Ik heb de e-mail verstuurd.", note: "Past participle of 'sturen' is 'verstuurd' with d.", level: "A2" },
+  { wrong: "Ik wil graag een informatie ontvangen.", right: "Ik wil graag wat informatie ontvangen.", note: "'Informatie' is uncountable — no 'een', no plural.", level: "B1" },
+  { wrong: "op de moment", right: "op dit moment", note: "Fixed expression: 'op dit moment' = at the moment.", level: "A2" },
+  { wrong: "Ik ben niet akkoord met het voorstel.", right: "Ik ben het niet eens met het voorstel.", note: "'zijn + eens' for agreement of opinion; 'akkoord gaan' is the verb form.", level: "B1" },
+  { wrong: "Dit is meer beter voor de klant.", right: "Dit is beter voor de klant.", note: "No double comparative — 'meer' + comparative is wrong.", level: "A2" },
+  { wrong: "Ik werk hier voor drie jaar.", right: "Ik werk hier al drie jaar.", note: "'voor' = planned duration ('voor drie weken'); 'al' = so far.", level: "B1" },
+  { wrong: "Ik kijk uit naar uw antwoordt.", right: "Ik kijk uit naar uw antwoord.", note: "'Antwoord' has no -t in writing (only spoken -t after d).", level: "A2" },
+  { wrong: "We hebben de contract getekend.", right: "We hebben het contract getekend.", note: "'Contract' is a het-word.", level: "A2" },
+  { wrong: "Het spijt me voor de vertraging.", right: "Mijn excuses voor de vertraging.", note: "In business Dutch, 'mijn excuses voor...' or 'sorry voor...' is standard.", level: "B1" }
+];
+
+const DICT_EXTRA = {
+  "direct": "direct / straightforward", "kwartaalcijfers": "quarterly figures", "stijgen": "to rise", "dalen": "to fall",
+  "stijging": "increase", "daling": "decrease", "aandeel": "share (stock)", "aandeelhouder": "shareholder",
+  "raad van bestuur": "board of directors", "directie": "the management / board", "omzetgroei": "revenue growth",
+  "verlies": "loss", "balans": "balance sheet", "dochterbedrijf": "subsidiary", "medewerker": "employee",
+  "vacature": "vacancy / job opening", "salaris": "salary", "ervaring": "experience", "overzicht": "overview",
+  "klant": "client / customer", "vlot": "smooth / quick", "doelgericht": "goal-oriented", "aantrekkelijk": "attractive",
+  "arbeidsvoorwaarden": "employment conditions", "fulltime": "full-time", "opleiding": "training / education",
+  "aanpakken": "to tackle", "zelfstandig": "independent", "nauwkeurig": "precise / accurate", "samenwerking": "collaboration",
+  "slagkracht": "decisiveness / drive", "bespreekbaarheid": "culture of openness", "directheid": "directness",
+  "borrel": "after-work drinks", "gebruikelijk": "customary", "hiërarchie": "hierarchy", "vlak": "flat (structure)",
+  "namelijk": "you see / namely", "echter": "however", "daardoor": "therefore / as a result", "terwijl": "while",
+  "ondanks": "despite", "inkoop": "procurement / purchasing", "pallet": "pallet", "expresselevering": "express delivery",
+  "transportdocument": "transport document", "ontvanger": "recipient", "leverancier": "supplier"
+};
+
+const READING_TEXTS = [
+  {
+    id: "cultuur",
+    title: "Werken bij een Nederlands bedrijf",
+    level: "B1",
+    paragraphs: [
+      "Nederlandse bedrijven staan bekend om hun platte hiërarchie. De manager is geen verre autoriteit, maar een collega die naast je werkt. Medewerkers verwachten dat ze hun mening mogen geven, ook als die afwijkt van de directie. Dit noemt men bespreekbaarheid: alles kan en mag besproken worden, ook kritiek op het beleid.",
+      "Directheid hoort daarbij. Een Nederlandse collega zegt bijvoorbeeld: 'Dit voorstel gaat niet werken, want we missen de data.' Dat klinkt onbeleefd voor mensen uit andere culturen, maar het is niet persoonlijk bedoeld. Het gaat om de zaak, niet om de persoon.",
+      "Ook de lunch is belangrijk. Tussen 12:00 en 12:30 eet het hele team samen, vaak gewoon brood uit de kantine. Vergaderingen worden niet gepland tijdens de lunch, en na 17:00 gaat het merendeel van de medewerkers naar huis. Werk-privébalans is geen buzzwoord, maar een verwachting."
+    ],
+    questions: [
+      { q: "Wat betekent 'bespreekbaarheid' volgens de tekst?", options: ["Dat vergaderingen kort moeten zijn", "Dat alles besproken mag worden, inclusief kritiek", "Dat de directie beslissingen alleen neemt"], answer: 1, explain: "'Alles kan en mag besproken worden, ook kritiek op het beleid.'" },
+      { q: "Hoe bedoelt de collega zijn kritische opmerking?", options: ["Persoonlijk", "Onbeleefd bedoeld", "Over de zaak, niet over de persoon"], answer: 2, explain: "'Het gaat om de zaak, niet om de persoon.'" },
+      { q: "Wat is gebruikelijk tijdens de lunch?", options: ["Doorwerken met een boterham achter je bureau", "Samen eten tussen 12:00 en 12:30", "Een vergadering met het team"], answer: 1, explain: "'Tussen 12:00 en 12:30 eet het hele team samen.'" }
+    ]
+  },
+  {
+    id: "kwartaal",
+    title: "Kwartaalcijfers Havens B.V.",
+    level: "B2",
+    paragraphs: [
+      "Havens B.V., handelaar in industriële onderdelen, heeft de kwartaalcijfers over het derde kwartaal gepubliceerd. De omzet steeg met 8% naar €4,2 miljoen, vooral dankzij de export naar Duitsland en België. De nettowinst bedroeg €310.000, een daling van 4% in vergelijking met vorig jaar.",
+      "Directievoorzitter Annemiek Havens noemt de resultaten 'degelijk, maar niet onverdeeld positief'. De marges staan onder druk door hogere grondstofkosten en de wisselkoers van de euro. 'We verwachten herstel in het eerste kwartaal van volgend jaar, mits de grondstofprijzen stabiliseren', aldus Havens.",
+      "Het bedrijf investeert dit jaar €600.000 in automatisering van het magazijn. Daardoor, zo verwacht de directie, daalt de doorlooptijd van orders van vijf naar drie werkdagen. De aandeelhouders krijgen ondanks de lagere winst een onveranderd dividend uitgekeerd."
+    ],
+    questions: [
+      { q: "Met hoeveel procent steeg de omzet?", options: ["4%", "8%", "12%"], answer: 1, explain: "'De omzet steeg met 8% naar €4,2 miljoen.'" },
+      { q: "Waarom daalde de nettowinst?", options: ["Hogere grondstofkosten en de wisselkoers", "Minder export naar Duitsland", "De investering in automatisering"], answer: 0, explain: "'De marges staan onder druk door hogere grondstofkosten en de wisselkoers van de euro.'" },
+      { q: "Wat verwacht de directie van de doorlooptijd?", options: ["Van vijf naar drie werkdagen", "Van drie naar vijf werkdagen", "Geen verandering"], answer: 0, explain: "'...daalt de doorlooptijd van orders van vijf naar drie werkdagen.'" },
+      { q: "Wat gebeurt er met het dividend?", options: ["Het wordt verlaagd", "Het blijft gelijk", "Het wordt dit jaar niet uitgekeerd"], answer: 1, explain: "'...krijgen de aandeelhouders ondanks de lagere winst een onveranderd dividend.'" }
+    ]
+  },
+  {
+    id: "vacature",
+    title: "Vacature: Projectleider Logistiek",
+    level: "C1",
+    paragraphs: [
+      "Ben je de projectleider die onze groei een boost geeft? Van Leeuwen Logistiek, met 240 medewerkers en vestigingen in Rotterdam en Venlo, zoekt per direct een projectleider logistiek. Je bent verantwoordelijk voor de implementatie van ons nieuwe Warehouse Management System en je stuurt een team van zes specialisten aan.",
+      "We vragen een afgeronde opleiding op hbo- of universitair niveau, minimaal vijf jaar ervaring in soortgelijke functies en uitstekende beheersing van Nederlands en Engels. Je werkt zelfstandig, bent nauwkeurig en hebt voldoende slagkracht om beslissingen te nemen onder tijdsdruk. Ervaring met procesoptimalisatie is een pré.",
+      "Wij bieden een marktconform salaris, goede arbeidsvoorwaarden en volop groeimogelijkheden binnen een organisatie in volle ontwikkeling. Solliciteren kan tot 1 november via ons carrièrepagina. Een assessment maakt deel uit van de procedure."
+    ],
+    questions: [
+      { q: "Wat is de hoofdverantwoordelijkheid van de functie?", options: ["Het magazijn dagelijks leiden", "De implementatie van het WMS", "De sales naar Duitsland"], answer: 1, explain: "'Je bent verantwoordelijk voor de implementatie van ons nieuwe Warehouse Management System.'" },
+      { q: "Hoeveel jaar ervaring wordt er minimaal gevraagd?", options: ["Drie jaar", "Vijf jaar", "Tien jaar"], answer: 1, explain: "'...minimaal vijf jaar ervaring in soortgelijke functies.'" },
+      { q: "Wat is een 'pré' (aanvullende eis)?", options: ["Ervaring met procesoptimalisatie", "Een rijbewijs", "Kennis van Duits"], answer: 0, explain: "'Ervaring met procesoptimalisatie is een pré.'" }
+    ],
+    wordBank: true
+  }
+];
+
+const ERROR_TEXTS = [
+  {
+    title: "Zakelijke e-mail — vind de fouten",
+    level: "B1",
+    items: [
+      { words: ["Ik", "heb", "gesproken", "met", "hem", "gisteren", "over", "de", "levering."], wrong: 5, correct: "gisteren → eerst", note: "Tijd staat vóór de rest: 'Ik heb gisteren met hem gesproken.'" },
+      { words: ["We", "hebben", "de", "contract", "getekend", "voor", "twee", "jaar."], wrong: 3, correct: "de → het", note: "'Contract' is een het-woord: 'het contract'." },
+      { words: ["Ik", "heb", "de", "offerte", "gisteren", "verstuurt", "naar", "de", "klant."], wrong: 5, correct: "verstuurt → verstuurd", note: "Voltooid deelwoord van 'sturen' is 'verstuurd'." },
+      { words: ["Zij", "zei", "dat", "zij", "stuurt", "de", "notulen", "vandaag."], wrong: 4, correct: "stuurt → zou sturen / stuurde", note: "In de bijzin gaat het werkwoord naar het einde: 'dat zij de notulen vandaag stuurt'." },
+      { words: ["Op", "de", "moment", "werken", "aan", "de", "oplossing."], wrong: 2, correct: "de → dit", note: "Vaste uitdrukking: 'op dit moment'." }
+    ]
+  },
+  {
+    title: "Vergader-notulen — vind de fouten",
+    level: "B2",
+    items: [
+      { words: ["Het", "vergadering", "begint", "om", "9:00", "in", "zaal", "B."], wrong: 1, correct: "Het → De", note: "'Vergadering' is een de-woord: 'de vergadering'." },
+      { words: ["Wij", "kunnen", "uw", "offerte", "niet", "vandaag", "bevestigen."], wrong: 5, correct: "niet vandaag → vandaag niet", note: "'Niet' staat na de tijd: 'vandaag niet bevestigen'." },
+      { words: ["Dit", "is", "meer", "beter", "voor", "onze", "klanten."], wrong: 2, correct: "meer beter → beter", note: "Geen dubbele vergrotende trap: 'beter'." },
+      { words: ["Ik", "werk", "hier", "voor", "drie", "jaar", "en", "woord", "projectleider."], wrong: 7, correct: "woord → wordt", note: "'Wordt' (van worden), niet 'woord'." },
+      { words: ["De", "directie", "heeft", "het", "voorstel", "afgewezen", "omdat", "de", "kosten", "was", "te", "hoog."], wrong: 9, correct: "was → waren", note: "'De kosten' is meervoud: 'omdat de kosten waren te hoog'." }
+    ]
+  }
+];
+
+SCENARIOS.push(
+  {
+    id: "angry-client",
+    type: "branch",
+    title: "De ontevreden klant",
+    titleEn: "The unhappy client",
+    level: "B2",
+    icon: "😠",
+    blurb: "A branching phone call: your choices decide how the conversation with an angry client ends.",
+    tips: [
+      "Acknowledge emotions first, then move to facts — even if the client is wrong.",
+      "Never send a client away empty-handed: always come with an action or a deadline.",
+      "Your satisfaction score changes with every choice — try to reach the best ending."
+    ],
+    steps: [],
+    start: "n1",
+    nodes: {
+      n1: {
+        bot: "Goedemiddag, u spreekt met mevrouw Kramer, inkoopmanager bij Veldhuizen B.V. Ik moet zeggen: ik ben niet blij. De levering van vorige week is nog steeds niet compleet!",
+        en: "Good afternoon, this is Mrs Kramer, purchasing manager at Veldhuizen B.V. I have to say: I'm not happy. Last week's delivery is still incomplete!",
+        options: [
+          { text: "Mijn excuses, mevrouw Kramer. Ik ga er meteen voor u achteraan.", next: "n2a", mood: 1, note: "Excuses + immediate action — exactly right." },
+          { text: "Dat klopt niet, wij hebben alles geleverd volgens onze administratie.", next: "n2b", mood: -1, note: "Defensive first — the client feels unheard." },
+          { text: "Ik begrijp uw frustratie. Mag ik de details even opzoeken?", next: "n2a", mood: 1, note: "Acknowledging frustration before facts — very good." }
+        ]
+      },
+      n2a: {
+        bot: "Dat waardeer ik. Het gaat om order 4471: tien pallets, en wij hebben er zes ontvangen.",
+        en: "I appreciate that. It's about order 4471: ten pallets, and we received six.",
+        options: [
+          { text: "Ik controleer de order en bel u binnen een uur terug met een oplossing.", next: "n3a", mood: 1, note: "Concrete action + concrete deadline." },
+          { text: "Dan moet u contact opnemen met onze logistiekafdeling.", next: "n3b", mood: -1, note: "Sending the client to another department is the classic mistake." },
+          { text: "Zijn er ook producten beschadigd aangekomen?", next: "n2c", mood: 0, note: "A good clarifying question." }
+        ]
+      },
+      n2c: {
+        bot: "Nee, niets is beschadigd, er ontbreken gewoon vier pallets. Wat gaat u daar nu aan doen?",
+        en: "No, nothing is damaged, four pallets are simply missing. What are you going to do about that now?",
+        options: [
+          { text: "Ik controleer de order en bel u binnen een uur terug met een oplossing.", next: "n3a", mood: 1, note: "Concrete action + concrete deadline." },
+          { text: "Dan moet u contact opnemen met onze logistiekafdeling.", next: "n3b", mood: -1, note: "Sending the client away — wrong move." }
+        ]
+      },
+      n2b: {
+        bot: "Volgens mijn administratie hebben wij tien pallets besteld en zes ontvangen. Ik heb het transportdocument hier liggen.",
+        en: "According to my records we ordered ten pallets and received six. I have the transport document right here.",
+        options: [
+          { text: "Mijn excuses. Dan nemen we het transportdocument samen even door.", next: "n2a", mood: 1, note: "Recovering well: apologies and cooperation." },
+          { text: "Dan zal er iets mis zijn met uw administratie.", next: "n3b", mood: -1, note: "Blaming the client — conversation is getting worse." }
+        ]
+      },
+      n3a: {
+        bot: "Prima. Wat stelt u voor?",
+        en: "Good. What do you propose?",
+        options: [
+          { text: "We sturen de ontbrekende pallets morgen met een expresselevering, zonder kosten voor u.", next: "end_good", mood: 1, note: "Fast solution, no cost to the client — excellent." },
+          { text: "We kunnen de pallets volgende week meesturen met een normale levering.", next: "end_neutral", mood: 0, note: "A solution, but slow for a client who is already waiting." },
+          { text: "Dat kan ik niet beloven, ik moet eerst mijn manager vragen.", next: "end_bad", mood: -1, note: "Empty hands again — the client loses patience." }
+        ]
+      },
+      n3b: {
+        bot: "Dit is de laatste keer dat ik hierover telefoneren. Ik verwacht vandaag nog een oplossing per e-mail.",
+        en: "This is the last time I discuss this by phone. I expect a solution by email today.",
+        options: [
+          { text: "Begrijpelijk. Ik stuur u binnen een uur een e-mail met een concrete oplossing en een datum.", next: "end_neutral", mood: 0, note: "You saved what could be saved." },
+          { text: "Onze serviceafdeling neemt zo spoedig mogelijk contact met u op.", next: "end_bad", mood: -1, note: "Vague and deflecting — the relationship is damaged." }
+        ]
+      },
+      end_good: {
+        bot: "Uitstekend, zo werken wij het liefst met een leverancier. Dan bespreken we volgende week ook de vervolgorder.",
+        en: "Excellent, that's how we prefer to work with a supplier. Then next week we'll also discuss the follow-up order.",
+        ending: "good"
+      },
+      end_neutral: {
+        bot: "Prima, ik verwacht uw e-mail. Maar ik hoop dat dit de laatste keer is.",
+        en: "Fine, I expect your email. But I hope this is the last time.",
+        ending: "neutral"
+      },
+      end_bad: {
+        bot: "Dat is niet wat ik verwacht van een leverancier. Ik ga dit bespreken met het management.",
+        en: "That is not what I expect from a supplier. I'm going to discuss this with management.",
+        ending: "bad"
+      }
+    }
+  }
+);
+
+const DICTATION_SENTENCES = [
+  { nl: "Goedemorgen, u spreekt met Sanne de Vries.", en: "Good morning, you're speaking with Sanne de Vries." },
+  { nl: "Ik stuur u vandaag nog de bevestiging per e-mail.", en: "I'll send you the confirmation by email today." },
+  { nl: "Zou de levering uiterlijk vrijdag binnen kunnen zijn?", en: "Could the delivery arrive by Friday at the latest?" },
+  { nl: "We lopen iets vertraging op door ziekte in het team.", en: "We're running slightly behind due to illness in the team." },
+  { nl: "Het rapport is klaar en ligt in bijlage.", en: "The report is finished and attached." },
+  { nl: "Ik neem de actiepunten voor mijn rekening.", en: "I'll take care of the action points." },
+  { nl: "De omzet is dit jaar met twaalf procent gestegen.", en: "Revenue rose by twelve percent this year." },
+  { nl: "Kunt u de offerte vóór maandag toesturen?", en: "Could you send the quotation before Monday?" },
+  { nl: "Ik wil graag een afspraak maken voor volgende week dinsdag.", en: "I'd like to make an appointment for next Tuesday." },
+  { nl: "De marges staan onder druk door hogere kosten.", en: "The margins are under pressure due to higher costs." },
+  { nl: "Ik stel voor om de deadline met een week te verlengen.", en: "I propose extending the deadline by one week." },
+  { nl: "Met vriendelijke groet, Pieter Bakker.", en: "Kind regards, Pieter Bakker." }
+];
+
 ;
 const STORE_KEY = "zakelijknl_v1";
 
@@ -1653,6 +2166,94 @@ function storageOk() {
 }
 
 ;
+let nlVoice = null;
+
+function ttsAvailable() {
+  return typeof window !== "undefined" && "speechSynthesis" in window;
+}
+
+function pickVoice() {
+  if (!ttsAvailable()) return;
+  const voices = window.speechSynthesis.getVoices();
+  nlVoice =
+    voices.find((v) => v.lang === "nl-NL") ||
+    voices.find((v) => v.lang && v.lang.indexOf("nl") === 0) ||
+    null;
+}
+
+if (ttsAvailable()) {
+  pickVoice();
+  window.speechSynthesis.onvoiceschanged = pickVoice;
+}
+
+function speak(text, rate, onend) {
+  if (!ttsAvailable()) {
+    if (onend) onend();
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u = new window.SpeechSynthesisUtterance(text);
+  u.lang = "nl-NL";
+  if (nlVoice) u.voice = nlVoice;
+  u.rate = rate || 1;
+  if (onend) u.onend = onend;
+  window.speechSynthesis.speak(u);
+}
+
+function stopSpeaking() {
+  if (ttsAvailable()) window.speechSynthesis.cancel();
+}
+
+function sttAvailable() {
+  return (
+    typeof window !== "undefined" &&
+    !!(window.SpeechRecognition || window.webkitSpeechRecognition)
+  );
+}
+
+let recognition = null;
+let listening = false;
+
+function toggleListening(onResult, onStart, onEnd) {
+  if (!sttAvailable()) return false;
+  if (listening) {
+    try { recognition.stop(); } catch (e) {}
+    return true;
+  }
+  const Ctor = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new Ctor();
+  recognition.lang = "nl-NL";
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    onResult(transcript);
+  };
+  recognition.onstart = () => {
+    listening = true;
+    if (onStart) onStart();
+  };
+  recognition.onend = () => {
+    listening = false;
+    if (onEnd) onEnd();
+  };
+  recognition.onerror = () => {
+    listening = false;
+    if (onEnd) onEnd();
+  };
+  try {
+    recognition.start();
+  } catch (e) {
+    listening = false;
+  }
+  return true;
+}
+
+function isListening() {
+  return listening;
+}
+
+;
 const state = loadState();
 let currentScenario = null;
 let currentStepIndex = 0;
@@ -1661,9 +2262,44 @@ let answeredThisStep = false;
 let reviewQueue = [];
 let reviewIndex = 0;
 let revealed = false;
+let branchMood = 0;
+let dictSession = [];
+let dictIndex = 0;
+let dictScore = 0;
+let dictChecked = false;
+let currentText = null;
+let readingMode = "texts";
+
+const LEVEL_ORDER = { A1: 0, A2: 1, B1: 2, B2: 3, C1: 4 };
+
+function levelValue(level) {
+  return LEVEL_ORDER[level] !== undefined ? LEVEL_ORDER[level] : 9;
+}
+
+function scenarioSize(s) {
+  return s.type === "branch" ? Object.keys(s.nodes).length : s.steps.length;
+}
+
+function scenarioDone(s) {
+  if (s.type === "branch") return !!state.scenarioDone[s.id];
+  return scenarioProgress(s) === s.steps.length;
+}
+
+function buildDict() {
+  const dict = {};
+  Object.keys(DICT_EXTRA).forEach((k) => {
+    dict[k] = DICT_EXTRA[k];
+  });
+  VOCAB.forEach((v) => {
+    const stripped = v.nl.replace(/^(de|het|een)\s+/, "");
+    if (!dict[stripped]) dict[stripped] = v.en;
+  });
+  return dict;
+}
+const DICT = buildDict();
 
 const $ = (id) => document.getElementById(id);
-const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
@@ -1703,7 +2339,8 @@ function renderStats() {
   $("toggle-translations").checked = state.translations;
 }
 
-function addMessage(kind, nlHtml, enText) {
+function addMessage(kind, nlHtml, enText, opts) {
+  opts = opts || {};
   const el = document.createElement("div");
   el.className = "msg " + kind;
   let html = "";
@@ -1716,35 +2353,127 @@ function addMessage(kind, nlHtml, enText) {
     }
   }
   el.innerHTML = html;
+  if (kind === "bot" && opts.speakable && ttsAvailable()) {
+    const btn = document.createElement("button");
+    btn.className = "speak-btn";
+    btn.title = "Listen (Dutch text-to-speech)";
+    btn.textContent = "🔊";
+    btn.dataset.text = opts.speakable;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      speak(opts.speakable, 1);
+    });
+    el.appendChild(btn);
+    const auto = document.getElementById("toggle-autoplay");
+    if (opts.autoplay && auto && auto.checked) {
+      speak(opts.speakable, 1);
+    }
+  }
   $("chat-window").appendChild(el);
   $("chat-window").scrollTop = $("chat-window").scrollHeight;
   return el;
 }
 
+function addOptions(options) {
+  const wrap = document.createElement("div");
+  wrap.className = "msg-options";
+  options.forEach((opt) => {
+    const b = document.createElement("button");
+    b.className = "option-btn";
+    b.textContent = opt.text;
+    b.dataset.next = opt.next;
+    b.dataset.mood = opt.mood;
+    b.dataset.note = opt.note;
+    b.addEventListener("click", () => chooseOption(opt, b));
+    wrap.appendChild(b);
+  });
+  $("chat-window").appendChild(wrap);
+  $("chat-window").scrollTop = $("chat-window").scrollHeight;
+}
+
+function chooseOption(opt, btn) {
+  if (currentScenario && currentScenario.type === "branch") {
+    const wrap = btn.parentElement;
+    if (wrap) wrap.querySelectorAll(".option-btn").forEach((b) => (b.disabled = true));
+  }
+  addMessage("user", esc(opt.text), null);
+  branchMood += opt.mood || 0;
+  addXp((opt.mood || 0) > 0 ? 8 : 4);
+  touchStreak();
+  if (opt.note) addMessage("coach", esc(opt.note), null);
+  renderMood();
+  const node = currentScenario.nodes[opt.next];
+  setTimeout(() => {
+    if (node.ending) {
+      addMessage("bot", esc(node.bot), node.en, { speakable: node.bot });
+      markBranchDone(node.ending);
+      const final =
+        node.ending === "good"
+          ? "🎉 <strong>Best ending!</strong> You handled a difficult client professionally. +20 bonus XP."
+          : node.ending === "neutral"
+          ? "👍 <strong>Acceptable ending.</strong> The relationship survived, but a faster, more concrete solution would have scored better."
+          : "⚠️ <strong>Difficult ending.</strong> The client escalated. Remember: acknowledge, take ownership, come with a concrete solution and a deadline.";
+      if (node.ending === "good") addXp(20);
+      addMessage("coach", final, null);
+      $("chat-input").closest(".composer").classList.add("hidden");
+    } else {
+      renderBranchNode(opt.next);
+    }
+  }, 650);
+}
+
+function markBranchDone(ending) {
+  state.scenarioDone[currentScenario.id] = ending;
+  saveState();
+  renderScenarioList();
+}
+
+function renderMood() {
+  const meter = $("mood-meter");
+  if (!meter || !currentScenario || currentScenario.type !== "branch") return;
+  const faces = branchMood >= 3 ? "😊😊😊" : branchMood === 2 ? "😊😊" : branchMood === 1 ? "🙂" : branchMood === 0 ? "😐" : branchMood === -1 ? "😕" : branchMood === -2 ? "😠" : "😠😠";
+  meter.innerHTML = "Klanttevredenheid: " + faces;
+}
+
+function renderBranchNode(nodeId) {
+  const node = currentScenario.nodes[nodeId];
+  addMessage("bot", esc(node.bot), node.en, { speakable: node.bot });
+  addOptions(node.options);
+}
+
 function renderScenarioList() {
   const wrap = $("scenario-list");
   wrap.innerHTML = "";
-  SCENARIOS.forEach((s) => {
-    const done = scenarioProgress(s);
-    const total = s.steps.length;
-    const card = document.createElement("div");
-    card.className = "scenario-card";
-    card.innerHTML =
-      '<span class="icon">' + s.icon + "</span>" +
-      "<h3>" + esc(s.title) + "</h3>" +
-      '<p>' + esc(s.blurb) + "</p>" +
-      '<div style="display:flex;gap:8px;align-items:center;margin-top:4px;">' +
-      '<span class="chip">' + s.level + "</span>" +
-      (done === total ? '<span class="chip done">✓ Completed</span>' : '<span class="chip warn">' + done + "/" + total + " steps</span>") +
-      "</div>";
-    card.addEventListener("click", () => openScenario(s.id));
-    wrap.appendChild(card);
-  });
+  [...SCENARIOS]
+    .sort((a, b) => levelValue(a.level) - levelValue(b.level))
+    .forEach((s) => {
+      const total = scenarioSize(s);
+      const doneCount = s.type === "branch" ? (scenarioDone(s) ? 1 : 0) : scenarioProgress(s);
+      const card = document.createElement("div");
+      card.className = "scenario-card";
+      card.innerHTML =
+        '<span class="icon">' + s.icon + "</span>" +
+        "<h3>" + esc(s.title) + "</h3>" +
+        "<p>" + esc(s.blurb) + "</p>" +
+        '<div style="display:flex;gap:8px;align-items:center;margin-top:4px;flex-wrap:wrap;">' +
+        '<span class="chip">' + s.level + "</span>" +
+        (s.type === "branch" ? '<span class="chip warn">🌱 branching</span>' : "") +
+        (doneCount === total
+          ? '<span class="chip done">✓ Completed</span>'
+          : '<span class="chip warn">' + doneCount + "/" + total + " steps</span>") +
+        "</div>";
+      card.addEventListener("click", () => openScenario(s.id));
+      wrap.appendChild(card);
+    });
 }
 
 function openScenario(id) {
+  stopSpeaking();
   currentScenario = SCENARIOS.find((s) => s.id === id);
   currentStepIndex = 0;
+  branchMood = 0;
+  attempts = 0;
+  answeredThisStep = false;
   $("scenario-list").classList.add("hidden");
   $("scenario-view").classList.remove("hidden");
   $("scenario-heading").textContent = currentScenario.icon + " " + currentScenario.title;
@@ -1752,14 +2481,25 @@ function openScenario(id) {
   const tips = currentScenario.tips.map((t) => "<li>" + esc(t) + "</li>").join("");
   $("tips-box").innerHTML = "<strong>Before you start</strong><ul>" + tips + "</ul>";
   $("chat-window").innerHTML = "";
-  attempts = 0;
-  answeredThisStep = false;
-  renderDots();
-  addMessage("bot", esc(currentScenario.steps[0].bot), currentScenario.steps[0].en);
-  $("chat-input").focus();
+  $("coach-note").textContent = "";
+  const isBranch = currentScenario.type === "branch";
+  $("mood-meter").classList.toggle("hidden", !isBranch);
+  $("composer-row").classList.toggle("hidden", isBranch);
+  if (isBranch) {
+    renderMood();
+    renderBranchNode(currentScenario.start);
+  } else {
+    renderDots();
+    addMessage("bot", esc(currentScenario.steps[0].bot), currentScenario.steps[0].en, {
+      speakable: currentScenario.steps[0].bot,
+      autoplay: true
+    });
+    $("chat-input").focus();
+  }
 }
 
 function closeScenario() {
+  stopSpeaking();
   currentScenario = null;
   $("scenario-view").classList.add("hidden");
   $("scenario-list").classList.remove("hidden");
@@ -1778,12 +2518,18 @@ function renderDots() {
   });
 }
 
+function playStepAudio() {
+  if ($("toggle-autoplay").checked) {
+    const step = currentScenario.steps[currentStepIndex];
+    speak(step.bot, 1);
+  }
+}
+
 function handleSend() {
   const input = $("chat-input");
   const text = input.value.trim();
-  if (!text || !currentScenario) return;
+  if (!text || !currentScenario || currentScenario.type === "branch") return;
   input.value = "";
-  const showEn = state.translations;
   addMessage("user", esc(text), null);
   touchStreak();
 
@@ -1793,7 +2539,7 @@ function handleSend() {
   if (result.verdict === "empty") return;
 
   if (result.verdict === "exact" || result.verdict === "near") {
-    const xp = (result.verdict === "exact" && attempts === 0 ? 15 : 10);
+    const xp = result.verdict === "exact" && attempts === 0 ? 15 : 10;
     addXp(xp);
     state.completedSteps[stepKey(currentScenario.id, currentStepIndex)] = true;
     saveState();
@@ -1805,15 +2551,21 @@ function handleSend() {
       currentStepIndex++;
       setTimeout(() => {
         const next = currentScenario.steps[currentStepIndex];
-        addMessage("bot", esc(next.bot), next.en);
+        addMessage("bot", esc(next.bot), next.en, { speakable: next.bot, autoplay: true });
         renderDots();
         $("coach-note").textContent = "";
         answeredThisStep = false;
+        playStepAudio();
       }, 700);
     } else {
       const allDone = scenarioProgress(currentScenario) === currentScenario.steps.length;
       setTimeout(() => {
-        addMessage("coach", "🎉 <strong>Scenario voltooid!</strong> You completed <strong>" + esc(currentScenario.titleEn) + "</strong>." + (allDone ? " This scenario is now fully mastered — try the next one." : ""), null);
+        addMessage(
+          "coach",
+          "🎉 <strong>Scenario voltooid!</strong> You completed <strong>" + esc(currentScenario.titleEn) + "</strong>." +
+            (allDone ? " This scenario is now fully mastered — try the next one." : ""),
+          null
+        );
         renderDots();
         answeredThisStep = false;
       }, 700);
@@ -1833,7 +2585,11 @@ function handleSend() {
     setNote("Attempt 2 — focus on the structure in the hint.", "warn");
   } else {
     const model = step.accept[0];
-    addMessage("coach", "A natural way to say it: <strong>" + esc(model) + "</strong><br>Type it (or your own version) to continue.", null);
+    addMessage(
+      "coach",
+      "A natural way to say it: <strong>" + esc(model) + "</strong><br>Type it (or your own version) to continue.",
+      null
+    );
     setNote("Model answer revealed — retype to advance.", "warn");
   }
 }
@@ -1850,16 +2606,37 @@ function setNote(text, cls) {
 }
 
 function handleHint() {
-  if (!currentScenario) return;
+  if (!currentScenario || currentScenario.type === "branch") return;
   const step = currentScenario.steps[currentStepIndex];
   addMessage("coach", "💡 " + esc(step.hint), null);
 }
 
 function handleShowAnswer() {
-  if (!currentScenario) return;
+  if (!currentScenario || currentScenario.type === "branch") return;
   const step = currentScenario.steps[currentStepIndex];
   addMessage("coach", "Model answer: <strong>" + esc(step.accept[0]) + "</strong>", null);
   setNote("Type a similar sentence to continue.", "");
+}
+
+function handleMic() {
+  if (!sttAvailable()) {
+    setNote("Speech recognition is not available in this browser. Try Chrome or Edge.", "warn");
+    return;
+  }
+  const btn = $("btn-mic");
+  toggleListening(
+    (transcript) => {
+      $("chat-input").value = $("chat-input").value ? $("chat-input").value + " " + transcript : transcript;
+      setNote("Heard: " + transcript, "good");
+    },
+    () => {
+      btn.classList.add("recording");
+      setNote("Listening… speak Dutch now.", "");
+    },
+    () => {
+      btn.classList.remove("recording");
+    }
+  );
 }
 
 function renderVocabFilters() {
@@ -1889,20 +2666,27 @@ function renderVocab() {
   wrap.innerHTML = "";
   const filtered = VOCAB.filter(
     (v) => (mod === "all" || v.module === mod) && (lvl === "all" || v.level === lvl)
-  );
+  ).sort((a, b) => levelValue(a.level) - levelValue(b.level));
   filtered.forEach((v) => {
     const rec = state.srs[v.nl];
     const box = rec ? rec.box + 1 : 0;
     const item = document.createElement("div");
-    item.className = "vocab-item";
+    item.className = "flip-card";
     item.innerHTML =
+      '<div class="flip-inner">' +
+      '<div class="flip-face flip-front">' +
       '<span class="nl-word">' + esc(v.nl) + "</span>" +
-      '<span class="en-word">' + esc(v.en) + "</span>" +
-      '<div class="meta"><span class="box-chip">' + v.level + '</span><span class="box-chip">box ' + box + "</span></div>";
+      '<div class="meta"><span class="box-chip">' + v.level + '</span><span class="box-chip">box ' + box + '</span></div>' +
+      '<span class="flip-hint">click to flip</span>' +
+      "</div>" +
+      '<div class="flip-face flip-back"><span class="en-word">' + esc(v.en) + "</span></div>" +
+      "</div>";
+    item.addEventListener("click", () => item.classList.toggle("flipped"));
     wrap.appendChild(item);
   });
   const due = dueCards().length;
-  $("vocab-summary").textContent = VOCAB.length + " words · " + due + " due for review" + (due ? " — keep the streak alive" : "");
+  $("vocab-summary").textContent =
+    VOCAB.length + " words · " + due + " due for review" + (due ? " — run a review session below the filters" : "");
 }
 
 const INTERVALS_DAYS = [0, 1, 3, 7, 16, 35];
@@ -1931,7 +2715,7 @@ function startReview() {
   if (reviewQueue.length === 0) {
     reviewQueue = VOCAB.slice();
   }
-  reviewQueue.sort(() => Math.random() - 0.5);
+  reviewQueue.sort((a, b) => levelValue(a.level) - levelValue(b.level));
   reviewIndex = 0;
   $("review-panel").classList.remove("hidden");
   showCard();
@@ -1949,12 +2733,13 @@ function showCard() {
   }
   const card = reviewQueue[reviewIndex];
   revealed = false;
-  $("review-progress").textContent = (reviewIndex + 1) + " / " + reviewQueue.length;
+  $("review-progress").textContent = reviewIndex + 1 + " / " + reviewQueue.length;
   $("card-nl").textContent = card.nl;
   $("card-en").textContent = card.en;
   $("card-en").classList.add("hidden");
   $("btn-reveal").classList.remove("hidden");
   $("grade-row").classList.add("hidden");
+  $("btn-say-card").classList.toggle("hidden", !ttsAvailable());
 }
 
 function revealCard() {
@@ -1973,24 +2758,42 @@ function endReview() {
 function renderGrammar() {
   const wrap = $("grammar-list");
   wrap.innerHTML = "";
-  GRAMMAR_TOPICS.forEach((g) => {
-    const el = document.createElement("div");
-    el.className = "grammar-item";
-    el.innerHTML = '<h4><span class="chip">' + g.level + "</span> " + esc(g.title) + "</h4><p>" + esc(g.body) + "</p>";
-    wrap.appendChild(el);
-  });
+  [...GRAMMAR_TOPICS]
+    .sort((a, b) => levelValue(a.level) - levelValue(b.level))
+    .forEach((g) => {
+      const el = document.createElement("div");
+      el.className = "grammar-item";
+      el.innerHTML = '<h4><span class="chip">' + g.level + "</span> " + esc(g.title) + "</h4><p>" + esc(g.body) + "</p>";
+      wrap.appendChild(el);
+    });
+
+  const mistakes = $("mistakes-list");
+  mistakes.innerHTML = "";
+  [...COMMON_MISTAKES]
+    .sort((a, b) => levelValue(a.level) - levelValue(b.level))
+    .forEach((m) => {
+      const el = document.createElement("div");
+      el.className = "mistake-item";
+      el.innerHTML =
+        '<div class="mistake-line wrong-line"><span class="mark">✗</span> ' + esc(m.wrong) + "</div>" +
+        '<div class="mistake-line right-line"><span class="mark">✓</span> ' + esc(m.right) + "</div>" +
+        '<p class="muted">' + esc(m.note) + "</p>" +
+        '<span class="chip">' + m.level + "</span>";
+      mistakes.appendChild(el);
+    });
 }
 
 function renderProgress() {
   const cards = $("progress-cards");
-  const totalSteps = SCENARIOS.reduce((n, s) => n + s.steps.length, 0);
-  const doneSteps = Object.keys(state.completedSteps).length;
+  const totalSteps = SCENARIOS.reduce((n, s) => n + scenarioSize(s), 0);
+  const doneSteps =
+    Object.keys(state.completedSteps).length + Object.keys(state.scenarioDone).length;
   const mastered = Object.values(state.srs).filter((r) => r.box >= 4).length;
   cards.innerHTML = "";
   [
     { big: state.xp, lbl: "Total XP" },
     { big: state.streak + "🔥", lbl: "Day streak" },
-    { big: doneSteps + "/" + totalSteps, lbl: "Dialogue steps" },
+    { big: doneSteps + "/" + totalSteps, lbl: "Steps completed" },
     { big: mastered, lbl: "Words mastered" }
   ].forEach((c) => {
     const el = document.createElement("div");
@@ -2001,27 +2804,290 @@ function renderProgress() {
 
   const rows = $("progress-scenarios");
   rows.innerHTML = "";
-  SCENARIOS.forEach((s) => {
-    const done = scenarioProgress(s);
-    const pct = Math.round((done / s.steps.length) * 100);
-    const row = document.createElement("div");
-    row.className = "progress-row";
-    row.innerHTML =
-      '<span>' + s.icon + '</span><span class="name">' + esc(s.title) + '</span>' +
-      '<div class="progress-bar"><i style="width:' + pct + '%"></i></div>' +
-      '<span class="muted">' + done + "/" + s.steps.length + "</span>";
-    rows.appendChild(row);
+  [...SCENARIOS]
+    .sort((a, b) => levelValue(a.level) - levelValue(b.level))
+    .forEach((s) => {
+      const total = scenarioSize(s);
+      const done = s.type === "branch" ? (scenarioDone(s) ? 1 : 0) : scenarioProgress(s);
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      const row = document.createElement("div");
+      row.className = "progress-row";
+      row.innerHTML =
+        "<span>" + s.icon + '</span><span class="name">' + esc(s.title) + "</span>" +
+        '<div class="progress-bar"><i style="width:' + pct + '%"></i></div>' +
+        '<span class="muted">' + done + "/" + total + "</span>";
+      rows.appendChild(row);
+    });
+}
+
+function initDictation() {
+  dictSession = DICTATION_SENTENCES.slice().sort(() => Math.random() - 0.5).slice(0, 8);
+  dictIndex = 0;
+  dictScore = 0;
+  dictChecked = false;
+  $("d-en").textContent = "";
+  $("d-feedback").textContent = "";
+  $("d-feedback").className = "composer-foot";
+  showDictSentence();
+}
+
+function showDictSentence() {
+  if (dictIndex >= dictSession.length) {
+    $("d-progress").textContent = "Session complete! 🎉";
+    $("btn-play").classList.add("hidden");
+    $("btn-repeat").classList.add("hidden");
+    $("btn-d-check").classList.add("hidden");
+    $("btn-d-next").classList.add("hidden");
+    $("d-input").classList.add("hidden");
+    $("d-score").textContent = dictScore + "/" + dictSession.length + " · " + (dictScore * 5) + " XP";
+    return;
+  }
+  $("btn-play").classList.remove("hidden");
+  $("btn-repeat").classList.remove("hidden");
+  $("btn-d-check").classList.remove("hidden");
+  $("btn-d-next").classList.remove("hidden");
+  $("d-input").classList.remove("hidden");
+  dictChecked = false;
+  $("d-progress").textContent = "Sentence " + (dictIndex + 1) + " / " + dictSession.length;
+  $("d-score").textContent = "Score: " + dictScore;
+  $("d-en").textContent = "";
+  $("d-feedback").textContent = "";
+  $("d-feedback").className = "composer-foot";
+  $("d-input").value = "";
+}
+
+function playDictSentence() {
+  if (dictIndex >= dictSession.length) return;
+  speak(dictSession[dictIndex].nl, parseFloat($("d-rate").value));
+}
+
+function checkDictation() {
+  if (dictChecked || dictIndex >= dictSession.length) return;
+  const text = $("d-input").value.trim();
+  if (!text) return;
+  dictChecked = true;
+  const s = dictSession[dictIndex];
+  const sim = similarity(normalize(text), normalize(s.nl));
+  if (sim >= 0.85) {
+    dictScore++;
+    addXp(5);
+    touchStreak();
+    $("d-feedback").innerHTML = "✅ <strong>Correct!</strong> " + esc(s.nl);
+    $("d-feedback").className = "composer-foot good";
+  } else {
+    $("d-feedback").innerHTML =
+      "❌ You wrote: <em>" + esc(text) + "</em><br>Correct: <strong>" + esc(s.nl) + "</strong>";
+    $("d-feedback").className = "composer-foot warn";
+  }
+  $("d-en").textContent = s.en;
+  $("d-score").textContent = "Score: " + dictScore;
+}
+
+function nextDictSentence() {
+  dictIndex++;
+  showDictSentence();
+  if (dictIndex < dictSession.length) playDictSentence();
+}
+
+function renderTextList() {
+  const wrap = $("text-list");
+  wrap.innerHTML = "";
+  [...READING_TEXTS]
+    .sort((a, b) => levelValue(a.level) - levelValue(b.level))
+    .forEach((t) => {
+      const card = document.createElement("div");
+      card.className = "scenario-card";
+      card.innerHTML =
+        '<span class="icon">📖</span><h3>' + esc(t.title) + "</h3>" +
+        "<p>" + t.paragraphs.length + " paragraphs · " + t.questions.length + " questions</p>" +
+        '<div style="margin-top:4px;"><span class="chip">' + t.level + "</span></div>";
+      card.addEventListener("click", () => openText(t));
+      wrap.appendChild(card);
+    });
+}
+
+function lookupWord(word) {
+  const clean = word.toLowerCase().replace(/[.,!?;:«»"“”'’()]/g, "").trim();
+  if (!clean) return null;
+  if (DICT[clean]) return DICT[clean];
+  if (clean.length > 4) {
+    if (DICT[clean.replace(/en$/, "")]) return DICT[clean.replace(/en$/, "")] + " (or plural form)";
+    if (DICT[clean.replace(/s$/, "")]) return DICT[clean.replace(/s$/, "")] + " (or plural form)";
+    if (DICT[clean.replace(/e$/, "")]) return DICT[clean.replace(/e$/, "")];
+  }
+  return null;
+}
+
+function openText(t) {
+  currentText = t;
+  $("text-list").classList.add("hidden");
+  $("text-reader").classList.remove("hidden");
+  $("text-title").textContent = t.title;
+  $("text-level").textContent = t.level;
+  const content = $("reading-content");
+  content.innerHTML = "";
+  const popup = $("word-popup");
+  t.paragraphs.forEach((p) => {
+    const para = document.createElement("p");
+    p.split(/\s+/).forEach((word) => {
+      const span = document.createElement("span");
+      span.className = "clickable-word";
+      span.textContent = word;
+      span.addEventListener("click", () => {
+        const meaning = lookupWord(word);
+        popup.classList.remove("hidden");
+        if (meaning) {
+          popup.innerHTML = "<strong>" + esc(word) + "</strong> = " + esc(meaning) +
+            ' <button class="btn small" id="popup-say">🔊</button>';
+          const sayBtn = popup.querySelector("#popup-say");
+          if (sayBtn && ttsAvailable()) sayBtn.addEventListener("click", () => speak(word, 1));
+        } else {
+          popup.innerHTML = "<strong>" + esc(word) + "</strong> — not in the dictionary." +
+            (ttsAvailable() ? ' <button class="btn small" id="popup-say">🔊</button>' : "");
+          const sayBtn = popup.querySelector("#popup-say");
+          if (sayBtn) sayBtn.addEventListener("click", () => speak(word, 1));
+        }
+      });
+      para.appendChild(span);
+      para.appendChild(document.createTextNode(" "));
+    });
+    content.appendChild(para);
+  });
+  renderQuestions();
+}
+
+function closeText() {
+  stopSpeaking();
+  currentText = null;
+  $("text-reader").classList.add("hidden");
+  $("text-list").classList.remove("hidden");
+  $("word-popup").classList.add("hidden");
+}
+
+function renderQuestions() {
+  const wrap = $("reading-questions");
+  wrap.innerHTML = "";
+  currentText.questions.forEach((q, qi) => {
+    const box = document.createElement("div");
+    box.className = "question-box";
+    box.innerHTML = "<p><strong>" + (qi + 1) + ".</strong> " + esc(q.q) + "</p>";
+    q.options.forEach((opt, oi) => {
+      const label = document.createElement("label");
+      label.className = "q-option";
+      label.innerHTML =
+        '<input type="radio" name="q' + qi + '" value="' + oi + '" /> ' + esc(opt);
+      box.appendChild(label);
+    });
+    const expl = document.createElement("p");
+    expl.className = "q-explain muted hidden";
+    expl.textContent = q.explain;
+    box.appendChild(expl);
+    wrap.appendChild(box);
+  });
+  $("reading-score").textContent = "";
+}
+
+function checkQuestions() {
+  if (!currentText) return;
+  let correct = 0;
+  currentText.questions.forEach((q, qi) => {
+    const box = $("reading-questions").children[qi];
+    const chosen = box.querySelector("input:checked");
+    const labels = box.querySelectorAll(".q-option");
+    labels.forEach((l, li) => l.classList.remove("q-right", "q-wrong"));
+    if (chosen) {
+      const val = parseInt(chosen.value, 10);
+      if (val === q.answer) {
+        correct++;
+        labels[val].classList.add("q-right");
+      } else {
+        labels[val].classList.add("q-wrong");
+        labels[q.answer].classList.add("q-right");
+      }
+    } else {
+      labels[q.answer].classList.add("q-right");
+    }
+    box.querySelector(".q-explain").classList.remove("hidden");
+  });
+  const score = correct + "/" + currentText.questions.length;
+  $("reading-score").textContent = "Score: " + score + (correct === currentText.questions.length ? " · Perfect! +15 XP" : " · +2 XP per correct answer");
+  addXp(correct === currentText.questions.length ? 15 : correct * 2);
+  touchStreak();
+}
+
+function renderErrorTexts() {
+  const wrap = $("error-list");
+  wrap.innerHTML = "";
+  let solved = 0;
+  ERROR_TEXTS.forEach((ex) => {
+    const box = document.createElement("div");
+    box.className = "error-exercise";
+    box.innerHTML = "<h4>" + esc(ex.title) + ' <span class="chip">' + ex.level + '</span></h4><p class="muted">Click the mistake in each sentence.</p>';
+    ex.items.forEach((item) => {
+      const line = document.createElement("div");
+      line.className = "error-line";
+      const noteEl = document.createElement("span");
+      noteEl.className = "error-note muted";
+      let attemptsItem = 0;
+      item.words.forEach((w, wi) => {
+        const span = document.createElement("span");
+        span.className = "clickable-word";
+        span.textContent = w;
+        span.addEventListener("click", () => {
+          if (line.classList.contains("solved")) return;
+          if (wi === item.wrong) {
+            line.classList.add("solved");
+            span.classList.add("q-right");
+            noteEl.innerHTML = "✓ " + esc(item.correct) + " — " + esc(item.note);
+            solved++;
+            addXp(3);
+            touchStreak();
+            if (solved === ERROR_TEXTS.reduce((n, e) => n + e.items.length, 0)) {
+              const done = document.createElement("p");
+              done.className = "good";
+              done.textContent = "🎉 All errors found! Well done.";
+              wrap.appendChild(done);
+            }
+          } else {
+            attemptsItem++;
+            span.classList.add("q-wrong");
+            setTimeout(() => span.classList.remove("q-wrong"), 900);
+            if (attemptsItem >= 3) {
+              noteEl.innerHTML = "The mistake is: " + esc(item.correct) + " — " + esc(item.note);
+            }
+          }
+        });
+        line.appendChild(span);
+        line.appendChild(document.createTextNode(" "));
+      });
+      line.appendChild(document.createElement("br"));
+      line.appendChild(noteEl);
+      box.appendChild(line);
+    });
+    wrap.appendChild(box);
   });
 }
 
-document.querySelectorAll(".tab").forEach((tab) => {
+document.querySelectorAll(".tabs .tab").forEach((tab) => {
   tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    document.querySelectorAll(".tabs .tab").forEach((t) => t.classList.remove("active"));
     document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
     tab.classList.add("active");
     $("view-" + tab.dataset.view).classList.add("active");
     if (tab.dataset.view === "vocab") renderVocab();
     if (tab.dataset.view === "progress") renderProgress();
+    if (tab.dataset.view === "grammar") renderGrammar();
+    if (tab.dataset.view === "listening" && dictIndex >= dictSession.length) initDictation();
+  });
+});
+
+document.querySelectorAll(".reading-modes .rtab").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".reading-modes .rtab").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    readingMode = btn.dataset.rmode;
+    $("reading-texts").classList.toggle("hidden", readingMode !== "texts");
+    $("reading-errors").classList.toggle("hidden", readingMode !== "errors");
   });
 });
 
@@ -2029,6 +3095,7 @@ $("btn-back").addEventListener("click", closeScenario);
 $("btn-send").addEventListener("click", handleSend);
 $("btn-hint").addEventListener("click", handleHint);
 $("btn-show-answer").addEventListener("click", handleShowAnswer);
+$("btn-mic").addEventListener("click", handleMic);
 $("chat-input").addEventListener("keydown", (e) => {
   if (e.key === "Enter") handleSend();
 });
@@ -2039,16 +3106,43 @@ $("toggle-translations").addEventListener("change", (e) => {
 $("btn-review").addEventListener("click", startReview);
 $("btn-end-review").addEventListener("click", endReview);
 $("btn-reveal").addEventListener("click", revealCard);
+$("btn-say-card").addEventListener("click", () => {
+  if (reviewIndex < reviewQueue.length) speak(reviewQueue[reviewIndex].nl.replace(/^(de|het|een)\s+/, ""), 1);
+});
 document.querySelectorAll(".btn.grade").forEach((b) => {
   b.addEventListener("click", () => gradeCard(b.dataset.grade));
 });
 $("vocab-filter-module").addEventListener("change", renderVocab);
 $("vocab-filter-level").addEventListener("change", renderVocab);
 
+$("btn-play").addEventListener("click", playDictSentence);
+$("btn-repeat").addEventListener("click", playDictSentence);
+$("btn-d-check").addEventListener("click", checkDictation);
+$("btn-d-next").addEventListener("click", nextDictSentence);
+$("btn-d-hint").addEventListener("click", () => {
+  if (dictIndex < dictSession.length) $("d-en").textContent = dictSession[dictIndex].en;
+});
+$("d-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") checkDictation();
+});
+
+$("btn-text-back").addEventListener("click", closeText);
+$("btn-check-questions").addEventListener("click", checkQuestions);
+
+if (!ttsAvailable()) {
+  $("btn-play").disabled = true;
+  $("btn-play").title = "Text-to-speech is not available in this browser. Try Chrome, Edge or Safari.";
+}
+if (!sttAvailable()) {
+  $("btn-mic").disabled = true;
+  $("btn-mic").title = "Speech recognition is not available in this browser. Try Chrome or Edge.";
+}
+
 if (!storageAvailable) {
   const warn = document.createElement("div");
   warn.className = "storage-warning";
-  warn.textContent = "⚠️ Browser storage is blocked, so your progress will not be saved between sessions. The app still works — but enable site data/cookies or leave private browsing to keep your progress.";
+  warn.textContent =
+    "⚠️ Browser storage is blocked, so your progress will not be saved between sessions. The app still works — but enable site data/cookies or leave private browsing to keep your progress.";
   document.querySelector("footer").prepend(warn);
 }
 
@@ -2058,6 +3152,9 @@ renderVocabFilters();
 renderGrammar();
 renderVocab();
 renderProgress();
+renderTextList();
+renderErrorTexts();
+initDictation();
 
 </script>
 </body>
