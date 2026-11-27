@@ -1124,3 +1124,254 @@ const GRAMMAR_TOPICS = [
     body: "'Zou u ... kunnen ...?' is the most polite form: 'Zou u het rapport kunnen toesturen?' Softer than 'Kunt u ...?' — standard in business email."
   }
 ];
+
+GRAMMAR_TOPICS.push(
+  {
+    title: "de-words vs het-words",
+    level: "A2",
+    body: "About 75% of Dutch nouns take 'de'; the rest take 'het'. All plurals and all diminutives take 'het'. Learn every business noun with its article: 'de vergadering' but 'het rapport', 'het aanbod', 'het contract'."
+  },
+  {
+    title: "Separable verbs",
+    level: "A2",
+    body: "Verbs like 'opbellen', 'afronden', 'overnemen' and 'vastleggen' split in main clauses: 'Ik bel je morgen op.' 'Hij maakt de presentatie vandaag af.' In subclauses they stay together: '... omdat ik je morgen opbel.'"
+  },
+  {
+    title: "'want' vs 'omdat'",
+    level: "B1",
+    body: "'want' keeps main-clause word order: 'Ik bel, want de levering is te laat.' 'omdat' sends the verb to the end: 'Ik bel omdat de levering te laat is.' Use 'omdat' in formal writing, 'want' when speaking."
+  },
+  {
+    title: "Time before place",
+    level: "A2",
+    body: "Dutch order is time before place: 'Ik bel u morgen vanuit kantoor.' — never 'Ik bel u vanuit kantoor morgen.' Same for dates: 'We ontmoeten elkaar dinsdag in Rotterdam.'"
+  },
+  {
+    title: "'er' + quantity or existence",
+    level: "B2",
+    body: "'Er' fills the subject slot when the real subject follows: 'Er zijn vier pallets ontvangen.' 'Er is een probleem met de levering.' 'Er zitten drie mensen in het team.'"
+  },
+  {
+    title: "Numbers and change in reports",
+    level: "B2",
+    body: "'met' = by (amount): 'De omzet steeg met 5%.' 'naar' = to (level): '... naar €2 miljoen.' 'van' = of: 'een stijging van 5%.' 'in vergelijking met' = compared to."
+  },
+  {
+    title: "Softening refusals and deadlines",
+    level: "B2",
+    body: "Dutch business language softens: 'Helaas moeten we u meedelen dat...' 'In principe mogelijk, maar...' 'Zo spoedig mogelijk' instead of 'nu meteen'. Refusals come with a reason, never bare 'nee'."
+  },
+  {
+    title: "Position of 'niet'",
+    level: "B1",
+    body: "'Niet' comes after time and place, before the rest: 'We kunnen uw offerte vandaag niet bevestigen.' — time ('vandaag') first, then 'niet'. Compare: 'Ik werk niet in Amsterdam.' (place first would be wrong)."
+  }
+);
+
+const COMMON_MISTAKES = [
+  { wrong: "Ik heb gesproken met hem gisteren.", right: "Ik heb gisteren met hem gesproken.", note: "Time comes before the rest of the sentence, and the conjugated verb stays second.", level: "A2" },
+  { wrong: "de rapport / de aanbod / de contract", right: "het rapport / het aanbod / het contract", note: "Learn nouns with their article. These three are common het-words.", level: "A2" },
+  { wrong: "...dat je stuurt de offerte.", right: "...dat je de offerte stuurt.", note: "In subclauses (after 'dat', 'omdat', 'als') the verb moves to the end.", level: "A2" },
+  { wrong: "Ik heb de e-mail verstuurt.", right: "Ik heb de e-mail verstuurd.", note: "Past participle of 'sturen' is 'verstuurd' with d.", level: "A2" },
+  { wrong: "Ik wil graag een informatie ontvangen.", right: "Ik wil graag wat informatie ontvangen.", note: "'Informatie' is uncountable — no 'een', no plural.", level: "B1" },
+  { wrong: "op de moment", right: "op dit moment", note: "Fixed expression: 'op dit moment' = at the moment.", level: "A2" },
+  { wrong: "Ik ben niet akkoord met het voorstel.", right: "Ik ben het niet eens met het voorstel.", note: "'zijn + eens' for agreement of opinion; 'akkoord gaan' is the verb form.", level: "B1" },
+  { wrong: "Dit is meer beter voor de klant.", right: "Dit is beter voor de klant.", note: "No double comparative — 'meer' + comparative is wrong.", level: "A2" },
+  { wrong: "Ik werk hier voor drie jaar.", right: "Ik werk hier al drie jaar.", note: "'voor' = planned duration ('voor drie weken'); 'al' = so far.", level: "B1" },
+  { wrong: "Ik kijk uit naar uw antwoordt.", right: "Ik kijk uit naar uw antwoord.", note: "'Antwoord' has no -t in writing (only spoken -t after d).", level: "A2" },
+  { wrong: "We hebben de contract getekend.", right: "We hebben het contract getekend.", note: "'Contract' is a het-word.", level: "A2" },
+  { wrong: "Het spijt me voor de vertraging.", right: "Mijn excuses voor de vertraging.", note: "In business Dutch, 'mijn excuses voor...' or 'sorry voor...' is standard.", level: "B1" }
+];
+
+const DICT_EXTRA = {
+  "direct": "direct / straightforward", "kwartaalcijfers": "quarterly figures", "stijgen": "to rise", "dalen": "to fall",
+  "stijging": "increase", "daling": "decrease", "aandeel": "share (stock)", "aandeelhouder": "shareholder",
+  "raad van bestuur": "board of directors", "directie": "the management / board", "omzetgroei": "revenue growth",
+  "verlies": "loss", "balans": "balance sheet", "dochterbedrijf": "subsidiary", "medewerker": "employee",
+  "vacature": "vacancy / job opening", "salaris": "salary", "ervaring": "experience", "overzicht": "overview",
+  "klant": "client / customer", "vlot": "smooth / quick", "doelgericht": "goal-oriented", "aantrekkelijk": "attractive",
+  "arbeidsvoorwaarden": "employment conditions", "fulltime": "full-time", "opleiding": "training / education",
+  "aanpakken": "to tackle", "zelfstandig": "independent", "nauwkeurig": "precise / accurate", "samenwerking": "collaboration",
+  "slagkracht": "decisiveness / drive", "bespreekbaarheid": "culture of openness", "directheid": "directness",
+  "borrel": "after-work drinks", "gebruikelijk": "customary", "hiërarchie": "hierarchy", "vlak": "flat (structure)",
+  "namelijk": "you see / namely", "echter": "however", "daardoor": "therefore / as a result", "terwijl": "while",
+  "ondanks": "despite", "inkoop": "procurement / purchasing", "pallet": "pallet", "expresselevering": "express delivery",
+  "transportdocument": "transport document", "ontvanger": "recipient", "leverancier": "supplier"
+};
+
+const READING_TEXTS = [
+  {
+    id: "cultuur",
+    title: "Werken bij een Nederlands bedrijf",
+    level: "B1",
+    paragraphs: [
+      "Nederlandse bedrijven staan bekend om hun platte hiërarchie. De manager is geen verre autoriteit, maar een collega die naast je werkt. Medewerkers verwachten dat ze hun mening mogen geven, ook als die afwijkt van de directie. Dit noemt men bespreekbaarheid: alles kan en mag besproken worden, ook kritiek op het beleid.",
+      "Directheid hoort daarbij. Een Nederlandse collega zegt bijvoorbeeld: 'Dit voorstel gaat niet werken, want we missen de data.' Dat klinkt onbeleefd voor mensen uit andere culturen, maar het is niet persoonlijk bedoeld. Het gaat om de zaak, niet om de persoon.",
+      "Ook de lunch is belangrijk. Tussen 12:00 en 12:30 eet het hele team samen, vaak gewoon brood uit de kantine. Vergaderingen worden niet gepland tijdens de lunch, en na 17:00 gaat het merendeel van de medewerkers naar huis. Werk-privébalans is geen buzzwoord, maar een verwachting."
+    ],
+    questions: [
+      { q: "Wat betekent 'bespreekbaarheid' volgens de tekst?", options: ["Dat vergaderingen kort moeten zijn", "Dat alles besproken mag worden, inclusief kritiek", "Dat de directie beslissingen alleen neemt"], answer: 1, explain: "'Alles kan en mag besproken worden, ook kritiek op het beleid.'" },
+      { q: "Hoe bedoelt de collega zijn kritische opmerking?", options: ["Persoonlijk", "Onbeleefd bedoeld", "Over de zaak, niet over de persoon"], answer: 2, explain: "'Het gaat om de zaak, niet om de persoon.'" },
+      { q: "Wat is gebruikelijk tijdens de lunch?", options: ["Doorwerken met een boterham achter je bureau", "Samen eten tussen 12:00 en 12:30", "Een vergadering met het team"], answer: 1, explain: "'Tussen 12:00 en 12:30 eet het hele team samen.'" }
+    ]
+  },
+  {
+    id: "kwartaal",
+    title: "Kwartaalcijfers Havens B.V.",
+    level: "B2",
+    paragraphs: [
+      "Havens B.V., handelaar in industriële onderdelen, heeft de kwartaalcijfers over het derde kwartaal gepubliceerd. De omzet steeg met 8% naar €4,2 miljoen, vooral dankzij de export naar Duitsland en België. De nettowinst bedroeg €310.000, een daling van 4% in vergelijking met vorig jaar.",
+      "Directievoorzitter Annemiek Havens noemt de resultaten 'degelijk, maar niet onverdeeld positief'. De marges staan onder druk door hogere grondstofkosten en de wisselkoers van de euro. 'We verwachten herstel in het eerste kwartaal van volgend jaar, mits de grondstofprijzen stabiliseren', aldus Havens.",
+      "Het bedrijf investeert dit jaar €600.000 in automatisering van het magazijn. Daardoor, zo verwacht de directie, daalt de doorlooptijd van orders van vijf naar drie werkdagen. De aandeelhouders krijgen ondanks de lagere winst een onveranderd dividend uitgekeerd."
+    ],
+    questions: [
+      { q: "Met hoeveel procent steeg de omzet?", options: ["4%", "8%", "12%"], answer: 1, explain: "'De omzet steeg met 8% naar €4,2 miljoen.'" },
+      { q: "Waarom daalde de nettowinst?", options: ["Hogere grondstofkosten en de wisselkoers", "Minder export naar Duitsland", "De investering in automatisering"], answer: 0, explain: "'De marges staan onder druk door hogere grondstofkosten en de wisselkoers van de euro.'" },
+      { q: "Wat verwacht de directie van de doorlooptijd?", options: ["Van vijf naar drie werkdagen", "Van drie naar vijf werkdagen", "Geen verandering"], answer: 0, explain: "'...daalt de doorlooptijd van orders van vijf naar drie werkdagen.'" },
+      { q: "Wat gebeurt er met het dividend?", options: ["Het wordt verlaagd", "Het blijft gelijk", "Het wordt dit jaar niet uitgekeerd"], answer: 1, explain: "'...krijgen de aandeelhouders ondanks de lagere winst een onveranderd dividend.'" }
+    ]
+  },
+  {
+    id: "vacature",
+    title: "Vacature: Projectleider Logistiek",
+    level: "C1",
+    paragraphs: [
+      "Ben je de projectleider die onze groei een boost geeft? Van Leeuwen Logistiek, met 240 medewerkers en vestigingen in Rotterdam en Venlo, zoekt per direct een projectleider logistiek. Je bent verantwoordelijk voor de implementatie van ons nieuwe Warehouse Management System en je stuurt een team van zes specialisten aan.",
+      "We vragen een afgeronde opleiding op hbo- of universitair niveau, minimaal vijf jaar ervaring in soortgelijke functies en uitstekende beheersing van Nederlands en Engels. Je werkt zelfstandig, bent nauwkeurig en hebt voldoende slagkracht om beslissingen te nemen onder tijdsdruk. Ervaring met procesoptimalisatie is een pré.",
+      "Wij bieden een marktconform salaris, goede arbeidsvoorwaarden en volop groeimogelijkheden binnen een organisatie in volle ontwikkeling. Solliciteren kan tot 1 november via ons carrièrepagina. Een assessment maakt deel uit van de procedure."
+    ],
+    questions: [
+      { q: "Wat is de hoofdverantwoordelijkheid van de functie?", options: ["Het magazijn dagelijks leiden", "De implementatie van het WMS", "De sales naar Duitsland"], answer: 1, explain: "'Je bent verantwoordelijk voor de implementatie van ons nieuwe Warehouse Management System.'" },
+      { q: "Hoeveel jaar ervaring wordt er minimaal gevraagd?", options: ["Drie jaar", "Vijf jaar", "Tien jaar"], answer: 1, explain: "'...minimaal vijf jaar ervaring in soortgelijke functies.'" },
+      { q: "Wat is een 'pré' (aanvullende eis)?", options: ["Ervaring met procesoptimalisatie", "Een rijbewijs", "Kennis van Duits"], answer: 0, explain: "'Ervaring met procesoptimalisatie is een pré.'" }
+    ],
+    wordBank: true
+  }
+];
+
+const ERROR_TEXTS = [
+  {
+    title: "Zakelijke e-mail — vind de fouten",
+    level: "B1",
+    items: [
+      { words: ["Ik", "heb", "gesproken", "met", "hem", "gisteren", "over", "de", "levering."], wrong: 5, correct: "gisteren → eerst", note: "Tijd staat vóór de rest: 'Ik heb gisteren met hem gesproken.'" },
+      { words: ["We", "hebben", "de", "contract", "getekend", "voor", "twee", "jaar."], wrong: 3, correct: "de → het", note: "'Contract' is een het-woord: 'het contract'." },
+      { words: ["Ik", "heb", "de", "offerte", "gisteren", "verstuurt", "naar", "de", "klant."], wrong: 5, correct: "verstuurt → verstuurd", note: "Voltooid deelwoord van 'sturen' is 'verstuurd'." },
+      { words: ["Zij", "zei", "dat", "zij", "stuurt", "de", "notulen", "vandaag."], wrong: 4, correct: "stuurt → zou sturen / stuurde", note: "In de bijzin gaat het werkwoord naar het einde: 'dat zij de notulen vandaag stuurt'." },
+      { words: ["Op", "de", "moment", "werken", "aan", "de", "oplossing."], wrong: 2, correct: "de → dit", note: "Vaste uitdrukking: 'op dit moment'." }
+    ]
+  },
+  {
+    title: "Vergader-notulen — vind de fouten",
+    level: "B2",
+    items: [
+      { words: ["Het", "vergadering", "begint", "om", "9:00", "in", "zaal", "B."], wrong: 1, correct: "Het → De", note: "'Vergadering' is een de-woord: 'de vergadering'." },
+      { words: ["Wij", "kunnen", "uw", "offerte", "niet", "vandaag", "bevestigen."], wrong: 5, correct: "niet vandaag → vandaag niet", note: "'Niet' staat na de tijd: 'vandaag niet bevestigen'." },
+      { words: ["Dit", "is", "meer", "beter", "voor", "onze", "klanten."], wrong: 2, correct: "meer beter → beter", note: "Geen dubbele vergrotende trap: 'beter'." },
+      { words: ["Ik", "werk", "hier", "voor", "drie", "jaar", "en", "woord", "projectleider."], wrong: 7, correct: "woord → wordt", note: "'Wordt' (van worden), niet 'woord'." },
+      { words: ["De", "directie", "heeft", "het", "voorstel", "afgewezen", "omdat", "de", "kosten", "was", "te", "hoog."], wrong: 9, correct: "was → waren", note: "'De kosten' is meervoud: 'omdat de kosten waren te hoog'." }
+    ]
+  }
+];
+
+SCENARIOS.push(
+  {
+    id: "angry-client",
+    type: "branch",
+    title: "De ontevreden klant",
+    titleEn: "The unhappy client",
+    level: "B2",
+    icon: "😠",
+    blurb: "A branching phone call: your choices decide how the conversation with an angry client ends.",
+    tips: [
+      "Acknowledge emotions first, then move to facts — even if the client is wrong.",
+      "Never send a client away empty-handed: always come with an action or a deadline.",
+      "Your satisfaction score changes with every choice — try to reach the best ending."
+    ],
+    steps: [],
+    start: "n1",
+    nodes: {
+      n1: {
+        bot: "Goedemiddag, u spreekt met mevrouw Kramer, inkoopmanager bij Veldhuizen B.V. Ik moet zeggen: ik ben niet blij. De levering van vorige week is nog steeds niet compleet!",
+        en: "Good afternoon, this is Mrs Kramer, purchasing manager at Veldhuizen B.V. I have to say: I'm not happy. Last week's delivery is still incomplete!",
+        options: [
+          { text: "Mijn excuses, mevrouw Kramer. Ik ga er meteen voor u achteraan.", next: "n2a", mood: 1, note: "Excuses + immediate action — exactly right." },
+          { text: "Dat klopt niet, wij hebben alles geleverd volgens onze administratie.", next: "n2b", mood: -1, note: "Defensive first — the client feels unheard." },
+          { text: "Ik begrijp uw frustratie. Mag ik de details even opzoeken?", next: "n2a", mood: 1, note: "Acknowledging frustration before facts — very good." }
+        ]
+      },
+      n2a: {
+        bot: "Dat waardeer ik. Het gaat om order 4471: tien pallets, en wij hebben er zes ontvangen.",
+        en: "I appreciate that. It's about order 4471: ten pallets, and we received six.",
+        options: [
+          { text: "Ik controleer de order en bel u binnen een uur terug met een oplossing.", next: "n3a", mood: 1, note: "Concrete action + concrete deadline." },
+          { text: "Dan moet u contact opnemen met onze logistiekafdeling.", next: "n3b", mood: -1, note: "Sending the client to another department is the classic mistake." },
+          { text: "Zijn er ook producten beschadigd aangekomen?", next: "n2c", mood: 0, note: "A good clarifying question." }
+        ]
+      },
+      n2c: {
+        bot: "Nee, niets is beschadigd, er ontbreken gewoon vier pallets. Wat gaat u daar nu aan doen?",
+        en: "No, nothing is damaged, four pallets are simply missing. What are you going to do about that now?",
+        options: [
+          { text: "Ik controleer de order en bel u binnen een uur terug met een oplossing.", next: "n3a", mood: 1, note: "Concrete action + concrete deadline." },
+          { text: "Dan moet u contact opnemen met onze logistiekafdeling.", next: "n3b", mood: -1, note: "Sending the client away — wrong move." }
+        ]
+      },
+      n2b: {
+        bot: "Volgens mijn administratie hebben wij tien pallets besteld en zes ontvangen. Ik heb het transportdocument hier liggen.",
+        en: "According to my records we ordered ten pallets and received six. I have the transport document right here.",
+        options: [
+          { text: "Mijn excuses. Dan nemen we het transportdocument samen even door.", next: "n2a", mood: 1, note: "Recovering well: apologies and cooperation." },
+          { text: "Dan zal er iets mis zijn met uw administratie.", next: "n3b", mood: -1, note: "Blaming the client — conversation is getting worse." }
+        ]
+      },
+      n3a: {
+        bot: "Prima. Wat stelt u voor?",
+        en: "Good. What do you propose?",
+        options: [
+          { text: "We sturen de ontbrekende pallets morgen met een expresselevering, zonder kosten voor u.", next: "end_good", mood: 1, note: "Fast solution, no cost to the client — excellent." },
+          { text: "We kunnen de pallets volgende week meesturen met een normale levering.", next: "end_neutral", mood: 0, note: "A solution, but slow for a client who is already waiting." },
+          { text: "Dat kan ik niet beloven, ik moet eerst mijn manager vragen.", next: "end_bad", mood: -1, note: "Empty hands again — the client loses patience." }
+        ]
+      },
+      n3b: {
+        bot: "Dit is de laatste keer dat ik hierover telefoneren. Ik verwacht vandaag nog een oplossing per e-mail.",
+        en: "This is the last time I discuss this by phone. I expect a solution by email today.",
+        options: [
+          { text: "Begrijpelijk. Ik stuur u binnen een uur een e-mail met een concrete oplossing en een datum.", next: "end_neutral", mood: 0, note: "You saved what could be saved." },
+          { text: "Onze serviceafdeling neemt zo spoedig mogelijk contact met u op.", next: "end_bad", mood: -1, note: "Vague and deflecting — the relationship is damaged." }
+        ]
+      },
+      end_good: {
+        bot: "Uitstekend, zo werken wij het liefst met een leverancier. Dan bespreken we volgende week ook de vervolgorder.",
+        en: "Excellent, that's how we prefer to work with a supplier. Then next week we'll also discuss the follow-up order.",
+        ending: "good"
+      },
+      end_neutral: {
+        bot: "Prima, ik verwacht uw e-mail. Maar ik hoop dat dit de laatste keer is.",
+        en: "Fine, I expect your email. But I hope this is the last time.",
+        ending: "neutral"
+      },
+      end_bad: {
+        bot: "Dat is niet wat ik verwacht van een leverancier. Ik ga dit bespreken met het management.",
+        en: "That is not what I expect from a supplier. I'm going to discuss this with management.",
+        ending: "bad"
+      }
+    }
+  }
+);
+
+const DICTATION_SENTENCES = [
+  { nl: "Goedemorgen, u spreekt met Sanne de Vries.", en: "Good morning, you're speaking with Sanne de Vries." },
+  { nl: "Ik stuur u vandaag nog de bevestiging per e-mail.", en: "I'll send you the confirmation by email today." },
+  { nl: "Zou de levering uiterlijk vrijdag binnen kunnen zijn?", en: "Could the delivery arrive by Friday at the latest?" },
+  { nl: "We lopen iets vertraging op door ziekte in het team.", en: "We're running slightly behind due to illness in the team." },
+  { nl: "Het rapport is klaar en ligt in bijlage.", en: "The report is finished and attached." },
+  { nl: "Ik neem de actiepunten voor mijn rekening.", en: "I'll take care of the action points." },
+  { nl: "De omzet is dit jaar met twaalf procent gestegen.", en: "Revenue rose by twelve percent this year." },
+  { nl: "Kunt u de offerte vóór maandag toesturen?", en: "Could you send the quotation before Monday?" },
+  { nl: "Ik wil graag een afspraak maken voor volgende week dinsdag.", en: "I'd like to make an appointment for next Tuesday." },
+  { nl: "De marges staan onder druk door hogere kosten.", en: "The margins are under pressure due to higher costs." },
+  { nl: "Ik stel voor om de deadline met een week te verlengen.", en: "I propose extending the deadline by one week." },
+  { nl: "Met vriendelijke groet, Pieter Bakker.", en: "Kind regards, Pieter Bakker." }
+];

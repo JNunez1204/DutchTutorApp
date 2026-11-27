@@ -4,15 +4,35 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Zakelijk Nederlands — Dutch Business Chat Tutor</title>
+<script>
+window.onerror = function (msg, src, line) {
+  var box = document.getElementById("fatal-error");
+  if (box) {
+    box.style.display = "block";
+    box.textContent = "Error: " + msg + " (" + (src || "") + ":" + line + ")";
+  }
+  return false;
+};
+setTimeout(function () {
+  var list = document.getElementById("scenario-list");
+  var box = document.getElementById("fatal-error");
+  if (list && list.children.length === 0 && box) {
+    box.style.display = "block";
+    box.textContent = "The app could not start: its script files did not load. Make sure index.html, styles.css and the js folder were all extracted together into the same folder — or open standalone.html, which works as a single file.";
+  }
+}, 1500);
+</script>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div id="fatal-error" class="fatal-error" style="display:none"></div>
+<noscript><div class="fatal-error">This app needs JavaScript enabled.</div></noscript>
 <header class="topbar">
   <div class="brand">
     <span class="flag">🇳🇱</span>
     <div>
       <h1>Zakelijk Nederlands</h1>
-      <p class="tagline">Dutch to business level, one conversation at a time</p>
+      <p class="tagline">Dutch to business level: chat, listen, read, speak</p>
     </div>
   </div>
   <div class="stats">
@@ -28,7 +48,9 @@
 <nav class="tabs">
   <button class="tab active" data-view="lessons">💬 Lessons</button>
   <button class="tab" data-view="vocab">🗂️ Vocabulary</button>
-  <button class="tab" data-view="grammar">📖 Grammar</button>
+  <button class="tab" data-view="listening">🎧 Listening</button>
+  <button class="tab" data-view="reading">📖 Reading</button>
+  <button class="tab" data-view="grammar">📝 Grammar</button>
   <button class="tab" data-view="progress">📈 Progress</button>
 </nav>
 
@@ -44,13 +66,21 @@
           <h2 id="scenario-heading"></h2>
           <span class="chip" id="scenario-level"></span>
         </div>
-        <div class="step-dots" id="step-dots"></div>
+        <div class="header-right">
+          <span id="mood-meter" class="mood-meter hidden"></span>
+          <label class="toggle" title="Automatically read every tutor line aloud">
+            <input type="checkbox" id="toggle-autoplay" />
+            <span>🔊 auto</span>
+          </label>
+          <div class="step-dots" id="step-dots"></div>
+        </div>
       </div>
       <div class="tips-box" id="tips-box"></div>
       <div class="chat-window" id="chat-window"></div>
-      <div class="composer">
+      <div class="composer" id="composer-row">
         <input type="text" id="chat-input" placeholder="Schrijf je antwoord in het Nederlands…" autocomplete="off" />
         <button class="btn primary" id="btn-send">Send</button>
+        <button class="btn ghost" id="btn-mic" title="Speak your answer (nl-NL)">🎤</button>
         <button class="btn ghost" id="btn-hint" title="Get a hint">Hint</button>
         <button class="btn ghost" id="btn-show-answer" title="Reveal a model answer">Show answer</button>
       </div>
@@ -79,6 +109,7 @@
         <button class="btn primary" id="btn-review">Review session</button>
       </div>
     </div>
+    <div id="vocab-table" class="flip-grid"></div>
     <div id="review-panel" class="review-panel hidden">
       <div class="flashcard" id="flashcard">
         <div class="card-top"><span id="review-progress" class="muted"></span><button class="btn ghost small" id="btn-end-review">End</button></div>
@@ -86,6 +117,7 @@
         <div class="card-answer hidden" id="card-en"></div>
         <div class="card-actions">
           <button class="btn ghost" id="btn-reveal">Show meaning</button>
+          <button class="btn ghost hidden" id="btn-say-card" title="Hear the word">🔊</button>
           <div class="grade-row hidden" id="grade-row">
             <button class="btn grade again" data-grade="again">Again</button>
             <button class="btn grade hard" data-grade="hard">Hard</button>
@@ -95,18 +127,76 @@
         </div>
       </div>
     </div>
-    <div id="vocab-table" class="vocab-table"></div>
+  </section>
+
+  <section id="view-listening" class="view">
+    <h2>🎧 Listening — dictation</h2>
+    <p class="muted">Listen to the business sentence and type exactly what you hear. If your browser has no Dutch voice, use Chrome, Edge or Safari.</p>
+    <div class="dictation-panel">
+      <div class="card-top">
+        <span id="d-progress" class="muted"></span>
+        <span id="d-score" class="muted"></span>
+      </div>
+      <div class="d-controls">
+        <button class="btn primary" id="btn-play">▶ Play</button>
+        <button class="btn ghost" id="btn-repeat">Repeat</button>
+        <select id="d-rate">
+          <option value="0.8">Slow (0.8×)</option>
+          <option value="1" selected>Normal (1×)</option>
+        </select>
+        <button class="btn ghost small" id="btn-d-hint">Hint (EN)</button>
+      </div>
+      <p id="d-en" class="muted"></p>
+      <div class="composer">
+        <input type="text" id="d-input" placeholder="Type what you hear…" autocomplete="off" />
+        <button class="btn primary" id="btn-d-check">Check</button>
+      </div>
+      <div class="composer-foot" id="d-feedback"></div>
+      <button class="btn" id="btn-d-next">Next sentence →</button>
+    </div>
+  </section>
+
+  <section id="view-reading" class="view">
+    <div class="reading-modes">
+      <button class="rtab active" data-rmode="texts">📖 Text bank</button>
+      <button class="rtab" data-rmode="errors">🔍 Error spotting</button>
+    </div>
+
+    <div id="reading-texts">
+      <div id="text-list" class="scenario-list"></div>
+      <div id="text-reader" class="hidden">
+        <button class="btn ghost" id="btn-text-back">← All texts</button>
+        <div class="scenario-title">
+          <h2 id="text-title"></h2>
+          <span class="chip" id="text-level"></span>
+        </div>
+        <p class="muted">Click any word to see its meaning.</p>
+        <div id="word-popup" class="word-popup hidden"></div>
+        <div id="reading-content" class="reading-content"></div>
+        <h3>Comprehension questions</h3>
+        <div id="reading-questions"></div>
+        <button class="btn primary" id="btn-check-questions">Check answers</button>
+        <div id="reading-score" class="composer-foot"></div>
+      </div>
+    </div>
+
+    <div id="reading-errors" class="hidden">
+      <div id="error-list"></div>
+    </div>
   </section>
 
   <section id="view-grammar" class="view">
     <h2>Grammar essentials for business Dutch</h2>
     <div id="grammar-list" class="grammar-list"></div>
+    <h3>Common mistakes to avoid</h3>
+    <p class="muted">These are the errors Dutch managers see most from non-native speakers.</p>
+    <div id="mistakes-list" class="mistakes-list"></div>
   </section>
 
   <section id="view-progress" class="view">
     <h2>Your progress</h2>
     <div class="progress-cards" id="progress-cards"></div>
-    <h3>Scenario completion</h3>
+    <h3>Scenario completion (easiest → hardest)</h3>
     <div id="progress-scenarios" class="progress-scenarios"></div>
   </section>
 
@@ -118,6 +208,7 @@
 
 <script src="js/data.js"></script>
 <script src="js/engine.js"></script>
+<script src="js/tts.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
