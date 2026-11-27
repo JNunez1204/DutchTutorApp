@@ -4,9 +4,29 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Zakelijk Nederlands — Dutch Business Chat Tutor</title>
+<script>
+window.onerror = function (msg, src, line) {
+  var box = document.getElementById("fatal-error");
+  if (box) {
+    box.style.display = "block";
+    box.textContent = "Error: " + msg + " (" + (src || "") + ":" + line + ")";
+  }
+  return false;
+};
+setTimeout(function () {
+  var list = document.getElementById("scenario-list");
+  var box = document.getElementById("fatal-error");
+  if (list && list.children.length === 0 && box) {
+    box.style.display = "block";
+    box.textContent = "The app could not start: its script files did not load. Make sure index.html, styles.css and the js folder were all extracted together into the same folder — or open standalone.html, which works as a single file.";
+  }
+}, 1500);
+</script>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div id="fatal-error" class="fatal-error" style="display:none"></div>
+<noscript><div class="fatal-error">This app needs JavaScript enabled.</div></noscript>
 <header class="topbar">
   <div class="brand">
     <span class="flag">🇳🇱</span>

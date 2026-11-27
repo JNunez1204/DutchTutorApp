@@ -241,6 +241,19 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
 
 .foot { text-align: center; color: var(--muted); font-size: 12.5px; padding: 20px; }
 
+.fatal-error {
+  display: none;
+  margin: 16px auto 0;
+  max-width: 720px;
+  background: #fbe3e0;
+  border: 1px solid #e5a49d;
+  color: #8c2f24;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  text-align: left;
+}
+
 .storage-warning {
   margin: 0 auto 10px;
   max-width: 640px;
