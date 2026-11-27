@@ -10,7 +10,7 @@ function normalize(text) {
 
 function prepPattern(pattern) {
   return pattern
-    .replace(/[.,!?;:«»“”()]/g, " ")
+    .replace(/[.,!?;:«»“”'’()]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -87,6 +87,24 @@ function loadState() {
   }
 }
 
+let storageAvailable = storageOk();
+
 function saveState() {
-  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  if (!storageAvailable) return;
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  } catch (e) {
+    storageAvailable = false;
+  }
+}
+
+function storageOk() {
+  try {
+    const probe = "__zn_probe__";
+    localStorage.setItem(probe, "1");
+    localStorage.removeItem(probe);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }

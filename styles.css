@@ -241,6 +241,18 @@ h3 { font-size: 16px; margin: 26px 0 10px; }
 
 .foot { text-align: center; color: var(--muted); font-size: 12.5px; padding: 20px; }
 
+.storage-warning {
+  margin: 0 auto 10px;
+  max-width: 640px;
+  background: #fbeadf;
+  border: 1px solid #ecc7a8;
+  color: var(--warn);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  text-align: left;
+}
+
 @media (max-width: 640px) {
   .topbar { padding: 14px 16px; }
   .tabs { padding: 8px 12px 0; }

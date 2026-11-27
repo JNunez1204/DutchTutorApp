@@ -390,6 +390,13 @@ document.querySelectorAll(".btn.grade").forEach((b) => {
 $("vocab-filter-module").addEventListener("change", renderVocab);
 $("vocab-filter-level").addEventListener("change", renderVocab);
 
+if (!storageAvailable) {
+  const warn = document.createElement("div");
+  warn.className = "storage-warning";
+  warn.textContent = "⚠️ Browser storage is blocked, so your progress will not be saved between sessions. The app still works — but enable site data/cookies or leave private browsing to keep your progress.";
+  document.querySelector("footer").prepend(warn);
+}
+
 renderStats();
 renderScenarioList();
 renderVocabFilters();
